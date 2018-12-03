@@ -65,6 +65,8 @@ class softly_failing:
                 if failed:
                     if self_._output_dir:
                         output_dir = self_._output_dir
+                    elif '_soft_failure_output_dir' in dir(self):
+                        output_dir = self._soft_failure_output_dir
                     else:
                         output_dir = Config().output_dir
                     return SoftFailureTarget(self.task_id, output_dir=output_dir)

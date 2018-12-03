@@ -62,6 +62,7 @@ For a complete example see [as_decorator.py](https://github.com/maxhollmann/luig
 Whan the wrapped task fails softly, it creates a report with the failure message or exception traceback to indicate this. These reports are stored in a directory specified in one of the following ways (in this order of precedence):
 
 * `output_dir` parameter passed to `softly_failing`
+* Property `_soft_failure_output_dir` on the wrapped task instance
 * Specified in `luigi.cfg`:
 
       [luigi_soft_failures.Config]
