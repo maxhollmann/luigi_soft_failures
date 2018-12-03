@@ -1,12 +1,16 @@
+# luigi-soft-failures
+
+[![pypi version](http://img.shields.io/pypi/v/luigi-soft-failures.svg?style=flat)](https://pypi.python.org/pypi/luigi-soft-failures)
+
 Provides a decorator for Luigi tasks that allows them to fail *softly*. Tasks that fail softly are seen by Luigi as complete, and thus don't prevent dependent tasks from running. The dependent task can check if it's dependencies actually ran successfully or failed softly.
 
 
-# Installation
+## Installation
 
-    pip install luigi_soft_failures
+    pip install luigi-soft-failures
 
 
-# Usage
+## Usage
 
 ```python
 from luigi_soft_failures import softly_failing
@@ -38,7 +42,7 @@ def run(self):
 For a complete example see [as_decorator.py](https://github.com/maxhollmann/luigi_soft_failures/blob/master/examples/as_decorator.py).
 
 
-## API
+### API
 
 `softly_failing` accepts the following parameters:
 
@@ -53,7 +57,7 @@ For a complete example see [as_decorator.py](https://github.com/maxhollmann/luig
 * `output_dir` (`str`, default `None`): Described [below](#storage-of-soft-failure-reports).
 
 
-## Storage of soft failure reports
+### Storage of soft failure reports
 
 Whan the wrapped task fails softly, it creates a report with the failure message or exception traceback to indicate this. These reports are stored in a directory specified in one of the following ways (in this order of precedence):
 
@@ -67,7 +71,7 @@ Whan the wrapped task fails softly, it creates a report with the failure message
 * Default `./soft_failures/`
 
 
-# Limitations
+## Limitations
 
 * Soft failure status is stored using a `LocalTarget`, so a local storage that all workers have access to is required.
 * In the Luigi visualizer, softly failed tasks are shown as complete.
